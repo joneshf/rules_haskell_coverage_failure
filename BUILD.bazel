@@ -1,0 +1,21 @@
+load(
+    "@rules_haskell//haskell:defs.bzl",
+    "haskell_library",
+    "haskell_toolchain_library",
+)
+
+haskell_library(
+    deps = [
+        "@rules_haskell//tools/runfiles:runfiles",
+        ":base",
+    ],
+    name = "foo",
+    srcs = [
+        "Foo.hs",
+    ],
+)
+
+haskell_toolchain_library(
+    name = "base",
+)
+

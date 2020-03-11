@@ -1,0 +1,33 @@
+workspace(
+    name = "rules_haskell_coverage_failure",
+)
+
+load(
+    "@bazel_tools//tools/build_defs/repo:http.bzl",
+    "http_archive",
+)
+
+http_archive(
+    name = "rules_haskell",
+    sha256 = "9701f26c2b35675375c6363d033a5fd74e9c7d6fe454d19b000b7892b68288f5",
+    strip_prefix = "rules_haskell-14f61c47e66e7828cb2d2828a61df1c6bf74cd34",
+    urls = [
+        "https://github.com/tweag/rules_haskell/archive/14f61c47e66e7828cb2d2828a61df1c6bf74cd34.zip",
+    ],
+)
+
+load(
+    "@rules_haskell//haskell:repositories.bzl",
+    "rules_haskell_dependencies",
+)
+
+rules_haskell_dependencies()
+
+load(
+    "@rules_haskell//haskell:toolchain.bzl",
+    "rules_haskell_toolchains",
+)
+
+rules_haskell_toolchains(
+    version = "8.6.5",
+)
